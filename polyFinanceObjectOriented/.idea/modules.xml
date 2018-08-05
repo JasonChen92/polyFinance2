@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/polyFinance-ObjectOriented-admin-web.iml" filepath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/polyFinance-ObjectOriented-admin-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/polyFinance-ObjectOriented-home-core.iml" filepath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/polyFinance-ObjectOriented-home-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/polyFinance-ObjectOriented-home-web.iml" filepath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/polyFinance-ObjectOriented-home-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/polyFinance-ObjectOriented-quartz-service.iml" filepath="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/polyFinance-ObjectOriented-quartz-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polyFinance-ObjectOriented-root.iml" filepath="$PROJECT_DIR$/polyFinance-ObjectOriented-root.iml" />
+    </modules>
+  </component>
+</project>

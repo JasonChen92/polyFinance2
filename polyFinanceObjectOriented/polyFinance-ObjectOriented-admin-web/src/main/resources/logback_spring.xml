@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- appender是配置输出终端，ConsoleAppender是控制台,name是自定义名 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- 配置日志格式，这是一个比较通用的格式 -->
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 输出终端是滚动文件 -->
+    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 基于时间滚动，就是每天的日志输出到不同的文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 输出日志的目录文件名，window中默认分区为当前程序的硬盘分区，%d{yyyy-MM-dd}是当前日期 -->
+            <fileNamePattern>/logs/warn/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 最大保存99个文件，超出的历史文件会被删除 -->
+            <maxHistory>99</maxHistory>
+        </rollingPolicy>
+        <!-- 按照日志级别进行过滤 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 只收集WARN级别的日志，其他高级别和低级别的日志都放弃 -->
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 除了filter，其他 配置和上面一样， 只是name和文件路径不同-->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/logs/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>99</maxHistory>
+        </rollingPolicy>
+        <!-- 阈值过滤器 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <!-- 收集ERROR及ERROR以上级别的日志 -->
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- root是根日志打印器，只有一个，负责整个系统的日志输出 -->
+    <root level="INFO">
+        <!-- 将上面三个输出终端配置到根打印器，将对整个系统 生效。 -->
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="WARN" />
+        <appender-ref ref="ERROR" />
+    </root>
+
+    <!-- logger是root的子打印器，可以有多个，输出name配置的包中的日志。 -->
+    <!-- com.task.repository是我的mybatis映射dao的包名，设置为debug可以打印mybatis的sql语句 -->
+    <logger name="com.task.repository" level="DEBUG" />
+</configuration>
